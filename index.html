@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="content"></div>
+    <script src="scr\data.js"></script>
+    <script>
+      const contentEl = document.querySelector(".content");
+
+      const data = JSON.parse(dataApi);
+
+      data.forEach((element) => {
+        const apiEl = document.createElement("div");
+        apiEl.classList.add("json_div");
+        contentEl.appendChild(apiEl);
+
+        const imgEl = document.createElement("img");
+        imgEl.classList.add("pictures");
+        imgEl.src = element.image;
+        apiEl.appendChild(imgEl);
+
+        const numberEl = document.createElement("h3");
+        numberEl.classList.add("numberList");
+        numberEl.textContent = element.number;
+        apiEl.appendChild(numberEl);
+
+        const descriptEl = document.createElement("p");
+        descriptEl.classList.add("description");
+        descriptEl.textContent = element.insult;
+        apiEl.appendChild(descriptEl);
+
+        const commentEl = document.createElement("div");
+        commentEl.classList.add("comments");
+        commentEl.textContent = element.comment;
+        apiEl.appendChild(commentEl);
+
+        const autorEl = document.createElement("p");
+        autorEl.classList.add("dateCreated");
+        autorEl.textContent = element.created;
+        apiEl.appendChild(autorEl);
+      });
+    </script>
+  </body>
+</html>
